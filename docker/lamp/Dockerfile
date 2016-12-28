@@ -32,6 +32,7 @@ RUN apt-get install -y libapache2-mod-php curl
 ADD configs/php/php.ini /etc/php/7.0/apache2/conf.d/30-docker.ini
 ADD configs/php/php-setup.sh /php-setup.sh
 RUN chmod +x /php-setup.sh
+RUN echo '<?php phpinfo();  ?>' >> /var/www/html/phpinfo.php
 RUN /php-setup.sh
 
 # MySQL
