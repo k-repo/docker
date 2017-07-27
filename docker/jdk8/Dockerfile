@@ -1,6 +1,15 @@
 FROM ubuntu:xenial
 MAINTAINER Azaddyne Kamal < kazaddyne [at] gmail {dot} com>
 
+ENV http_proxy 'http://proxy:3128'
+ENV https_proxy 'http://proxy:3128'
+ENV HTTP_PROXY 'http://proxy:3128'
+ENV HTTPS_PROXY 'http://proxy:3128'
+
+# proxy settings
+RUN echo 'Acquire::http::proxy "http://proxy:3128/";' >> /etc/apt/apt.conf
+RUN echo 'Acquire::https::proxy "https://proxy:3128/";' >> /etc/apt/apt.conf
+
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 # always make sure the package repository is up to date
